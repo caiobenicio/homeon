@@ -1,14 +1,17 @@
 language: java
 sudo: false
 jdk:
-  - oraclejdk8
+- oraclejdk8
 deploy:
   provider: heroku
   api-key:
     secure: "$HEROKU_API_KEY"
   app: homeonapp
 script:
-  - mvn test
-  - mvn cobertura:cobertura
+- mvn test
+- mvn cobertura:cobertura
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+notifications:
+  slack:
+    secure: hoSb2JK9J6SA5tYwxlzac9n+GDLzF0EUpxde2Je97zPCh1jyGx3pBqJJ3X776/vtuHpe1XSFWlb8fh6hJmKJW/0DBGrdkA+KZG0XNNEjvCQ8GksNKyOVEzXNETcBpTl53VEU6GfEmDVq6XrCc26WVFCU00KUZHGZNnpPvXSD6NzEtbp0VbIwEUylbdYtNqw0P+Fcht7NYChIapIyaERbV6euaXK8QqsS9UQFTHIQoWLcFHCbFAeiPfic61mzQkPi2QgzHIWrIY6z65JiAZfj75OXwserGLAW3dVyOaeIp/UMTN45yltrt3nep9Lotg6bwMh1EJeLb5A4kgKXubTZ0zWk+3U/rd08iDQwhmpNL4hb/rSr4NIZSxvoJGJ1v/brnL7V+LaYiacYLGEwFqlKt2criHqghYk/AsnXXrTKGTpzumd9WKb3/YIZq5ycnvFcCl4WgYoRY3KrWMCpGsoplVkUTuGZ5sEzUO0iEpreRc/iDQy0UIPUYcSmCFoPBZOg3TkY1RPMgv0+oAteHXwobYe4kg3Tgvi+Y+VDmeQqnv98RBZnR6fUV101JH68skXXYdP5JO5elmGl7AyBFqguhwba8BQtOzoq9XH/QQucrP1ktBRihOC5dw0VTL7Uo24tr6eos401Ne/D8Rna8J2TcPK2mUzepGhM1LtYW9ZfQmc=
