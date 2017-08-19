@@ -1,7 +1,5 @@
 # Home On
 
-[![Build Status](https://travis-ci.org/bbranquinho/homeon.svg?branch=master)](https://travis-ci.org/bbranquinho/homeon) [![codecov](https://codecov.io/gh/bbranquinho/homeon/branch/master/graph/badge.svg)](https://codecov.io/gh/bbranquinho/homeon)
-
 ## 1. Requisitos
 
 Para executar o projeto é necessária a instalação das seguintes ferramentas:
