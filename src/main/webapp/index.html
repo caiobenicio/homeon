@@ -1,46 +1,99 @@
-<!doctype html>
-<html class="no-js">
-<head>
+<!DOCTYPE html>
+<html ng-app="homeon">
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>jhipster_maven</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="">
+    <link rel="icon" href="bootstrap4/favicon.ico">
 
-    <!-- build:css content/css/vendor.css -->
-    <!-- bower:css -->
-    <!-- endinject -->
-    <!-- endbuild -->
+    <title>Simulador Presença Residencia</title>
 
-    <!-- build:css content/css/main.css -->
-    <link rel="stylesheet" href="content/css/main.css">
-    <!-- endbuild -->
-</head>
-<body ng-app="jhipsterMavenApp" ng-strict-di>
-    <!--[if lt IE 9]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <page-ribbon></page-ribbon>
-    <div ui-view="navbar" ng-cloak></div>
-    <div class="container">
-        <div class="well" ui-view="content">
-            <!-- Angular views -->
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap4/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar-top-fixed.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#/">HomeOn</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#residencia">Residencia </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#comodo">Comodos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sensor">Sensores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#dispositivo">Dispositivos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#abrirChamado">Abrir Chamado</a>
+            </li>
+          </ul>
+
         </div>
+      </nav>
 
-        <div class="footer" ng-cloak>
-            <p data-translate="footer">This is your footer</p>
-        </div>
-    </div>
 
-    <!-- build:js app/vendor.js -->
-    <!-- bower:js -->
-    <!-- endinject -->
-    <!-- endbuild -->
+      <!-- Main -->
+      <div id="main">
+        <!-- Post -->
+        <article class="post">
+            <ng-view />
+        </article>
+      </div>
 
-    <!-- build:js app/app.js  -->
+ </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap4/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap4/assets/js/vendor/popper.min.js"></script>
+    <script src="bootstrap4/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap4/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- dependecias:js -->
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-route.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/util.js"></script>
+		<script src="js/ie/html5shiv.js"></script>
+		<script src="js/ie/respond.min.js"></script>
+
     <!-- inject:js -->
-    <!-- endinject -->
-    <!-- endbuild -->
+    <script src="src/index.js"></script>
+    <script src="src/main/main.js"></script>
+    <script src="src/utils/util.service.js"></script>
+    <script src="src/home/home.js"></script>
+    <script src="src/residencia/residencia.js"></script>
+    <script src="src/comodo/comodo.js"></script>
+    <script src="src/sensor/sensor.js"></script>
+    <script src="src/dispositivo/dispositivo.js"></script>
+    <script src="src/abrirChamado/abrirChamado.js"></script>
+    <script src="src/login/login.js"></script>
+    <script src="src/user/user.js"></script>
 
-</body>
+    <!-- endinject -->
+
+  </body>
 </html>
