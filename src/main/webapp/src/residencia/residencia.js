@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('homeon')
-  .controller('FzdCtrl', function($scope, $http, RestSrv){
+  .controller('rsdCtrl', function($scope, $http, RestSrv){
     var url ="http://localhost:8080/api/private/fazenda";
-    $scope.fzd = {};
-    $scope.fzds = [];
+    $scope.rsd = {};
+    $scope.rsds = [];
     $scope.permissions = [];
-    $scope.showAddEditFzd = false;
+    $scope.showAddEditRsd = false;
 
     $scope.show = function(){
-      $scope.showAddEditFzd = true;
+      $scope.showAddEditRsd = true;
     };
     $scope.hide = function(){
-      $scope.showAddEditFzd = false;
-      $scope.fzd = {};
+      $scope.showAddEditRsd = false;
+      $scope.rsd = {};
     };
 
     var permissionUrl = 'http://localhost:8080/api/private/permission';
@@ -21,39 +21,39 @@ angular.module('homeon')
     RestSrv.find(permissionUrl, function(data){
       $scope.permissions = data;
       RestSrv.find(url, function(data){
-        $scope.fzds = data;
+        $scope.rsds = data;
       });
     });
   //var userUrl = SERVICE_PATH.PRIVATE_PATH + '/user';
-    $scope.editFzd = function(fzd){
-      $scope.fzd = angular.copy(fzd);
+    $scope.editRsd = function(rsd){
+      $scope.rsd = angular.copy(rsd);
       $scope.show();
     };
-  $scope.deleteFzd = function(fzd) {
-  RestSrv.delete('http://localhost:8080/api/private/fazenda', fzd, function() {
-    $scope.fzds.splice($scope.fzds.indexOf(fzd), 1);
-    //ngNotify.set('Package \'' + fzd.name + '\' deleted.', 'success');
+  $scope.deleteRsd = function(rsd) {
+  RestSrv.delete('http://localhost:8080/api/private/fazenda', rsd, function() {
+    $scope.rsds.splice($scope.rsds.indexOf(rsd), 1);
+    //ngNotify.set('Package \'' + Rsd.name + '\' deleted.', 'success');
   });
 };
-$scope.saveFzd = function(fzd) {
-      if (fzd.id) {
-        RestSrv.edit('http://localhost:8080/api/private/fazenda', fzd, function() {
-          delete fzd.password;
+$scope.saveRsd = function(rsd) {
+      if (rsd.id) {
+        RestSrv.edit('http://localhost:8080/api/private/fazenda', rsd, function() {
+          delete rsd.password;
 
-          for (var i = 0; i < $scope.fzds.length; i++) {
-            if ($scope.fzds[i].id === fzd.id) {
-              $scope.fzds[i] = fzd;
+          for (var i = 0; i < $scope.rsds.length; i++) {
+            if ($scope.rsds[i].id === rsd.id) {
+              $scope.rsds[i] = rsd;
             }
           }
 
           $scope.hide();
-      //    ngNotify.set('fzd \'' + fzd.name + '\' updated.', 'success');
+      //    ngNotify.set('Rsd \'' + Rsd.name + '\' updated.', 'success');
         });
       } else {
-        RestSrv.add('http://localhost:8080/api/private/fazenda', fzd, function(newFzd) {
-          $scope.fzds.push(newFzd);
+        RestSrv.add('http://localhost:8080/api/private/fazenda', rsd, function(newRsd) {
+          $scope.rsds.push(newRsd);
           $scope.hide();
-        //  ngNotify.set('fzd \'' + fzd.name + '\' added.', 'success');
+        //  ngNotify.set('Rsd \'' + Rsd.name + '\' added.', 'success');
         });
       }
     };
@@ -61,7 +61,7 @@ $scope.saveFzd = function(fzd) {
       $scope.permissions = data;
 
       RestSrv.find(url, function(data) {
-        $scope.fzds = data;
+        $scope.rsds = data;
       //  ngNotify.set('Loaded users with success.', 'success');
       });
     });

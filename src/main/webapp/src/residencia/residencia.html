@@ -1,42 +1,54 @@
 <div>
-  <button type="button" ng-hide="showAddEditFzd" ng-click="show()"> New Fazenda</button>
-  <form ng-submit="saveFzd(fzd)" ng-hide="!showAddEditFzd">
+  <button type="button" ng-hide="showAddEditRsd" ng-click="show()"> New Fazenda</button>
+  <form ng-submit="saveRsd(rsd)" ng-hide="!showAddEditRsd">
       <div>
-        <label>Name</label>
-        <input type="text" placeholder="Name" ng-model="fzd.name" />
+        <label>Cidade</label>
+        <input type="text" placeholder="cidade" ng-model="rsd.cidade" />
       </div>
       <div>
-        <label>Codigo</label>
-        <input type="text" placeholder="codigo" ng-model="fzd.code" />
+        <label>Bairro</label>
+        <input type="text" placeholder="bairro" ng-model="rsd.bairro" />
       </div>
       <div>
-        <label>Endereço</label>
-        <input type="text" placeholder="endereço" ng-model="fzd.endereco" />
+        <label>Rua</label>
+        <input type="text" placeholder="rua" ng-model="rsd.rua" />
+      </div>
+      <div>
+        <label>UF</label>
+        <input type="text" placeholder="uf" ng-model="rsd.uf" />
+      </div>
+      <div>
+        <label>Quantidade Morador</label>
+        <input type="text" placeholder="morador" ng-model="rsd.morador" />
       </div>
       <button type="submit">Salvar</button>
       <button type="button" ng-click="hide()">Cancelar</button>
 
   </form>
   <div>
-    <br /><h3>Fazendas</h3>
+    <br /><h3>Residencia</h3>
     <table>
       <thead>
         <tr>
-          <th> Nome</th>
-          <th> Codigo</th>
-          <th> Endereço</th>
+          <th> Cidade</th>
+          <th> Bairro</th>
+          <th> Rua</th>
+          <th> UF</th>
+          <th> Quantidade de Moradores</th>
           <th> </th>
           <th> </th>
 
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="fzd in fzds">
-          <td>{{ fzd.name }}</td>
-          <td>{{ fzd.code }}</td>
-          <td>{{ fzd.endereco }}</td>
-          <td><button ng-click="editFzd(fzd)">Edit</button></td>
-          <td><button ng-click="deleteFzd(fzd)">Delete</button></td>
+        <tr ng-repeat="rsd in rsds">
+          <td>{{ rsd.cidade }}</td>
+          <td>{{ rsd.bairro }}</td>
+          <td>{{ rsd.rua }}</td>
+          <td>{{ rsd.uf }}</td>
+          <td>{{ rsd.morador }}</td>
+          <td><button ng-click="editRsd(rsd)">Edit</button></td>
+          <td><button ng-click="deleteRsd(rsd)">Delete</button></td>
         </tr>
       </tbody>
 
