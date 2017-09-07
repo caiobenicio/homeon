@@ -14,13 +14,13 @@ import static org.junit.Assert.assertTrue;
 
 public class UserRepositoryTest extends BaseTest {
 
-    private final Logger LOGGER = Logger.getLogger(this.getClass());
+    private  final Logger LOGGER = Logger.getLogger(UserRepositoryTest.class);
 
     @Autowired
     private UserRepository userRepository;
 
     @Test
-    public void findAll_success() {
+    public void findAll() {
         List<UserEntity> users = userRepository.findAll();
 
         LOGGER.debug(users);
@@ -29,4 +29,19 @@ public class UserRepositoryTest extends BaseTest {
         assertTrue(users.size() > 0);
     }
 
+	@Test
+	public void findAllTest() {
+		List<UserEntity> users = this.userRepository.findAll();
+
+		LOGGER.info(users);
+	}
+	
+	@Test
+	public void findFindByName() {
+		List<UserEntity> sol = this.userRepository.findByName("caio");
+
+		if (LOGGER.isInfoEnabled()) {
+			LOGGER.info("Test FindAll(): " + sol);
+		}
+	}
 }

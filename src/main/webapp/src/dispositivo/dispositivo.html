@@ -1,0 +1,45 @@
+
+
+<div>
+  <button type="button" ng-hide="showAddEditDsptv" ng-click="show()"> Novo Dispositivo</button>
+  <form ng-submit="saveDsptv(dsptv)" ng-hide="!showAddEditDsptv">
+      <div>
+        <label>Nome</label>
+        <input type="text" placeholder="nome" ng-model="dsptv.name" />
+      </div>
+      <div>
+        <label>Funcao</label>
+        <input type="text" placeholder="funçao" ng-model="dsptv.funcao" />
+      </div>
+      <div>
+        <label>Estado</label>
+        <input type="text" placeholder="estado" ng-model="dsptv.estado" />
+      </div>
+
+      <br />
+      <button type="submit">Salvar</button>
+      <button type="button" ng-click="hide()">Cancelar</button>
+
+  </form>
+  <div>
+    <br /><h3>Dispositivos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th> Nome</th>
+          <th> Funcao</th>
+          <th> Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="dsptv in dsptvs">
+          <td>{{ dsptv.name }}</td>
+          <td>{{ dsptv.funcao }}</td>
+          <td>{{ dsptv.estado }}</td>
+          <td><button ng-click="editDsptv(dsptv)">Edit</button></td>
+          <td><button ng-click="deleteDsptv(dsptv)">Delete</button></td>
+      </tbody>
+
+    </table>
+  </div>
+</div>

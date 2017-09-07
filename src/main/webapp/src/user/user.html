@@ -1,55 +1,117 @@
 
+	    <div class="main-panel">
+	        <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-md-8">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="#696969">
+	                                <h4 class="title">Editar Perfil</h4>
+									<p class="category">Completar perfil</p>
+	                            </div>
+	                            <div class="card-content">
+	                                <form  ng-submit="saveUser(user)">
+	                                    <div class="row">
+	                                        <div class="col-md-5">
+												<div class="form-group label-floating">
+													<label class="control-label">Companhia </label>
+													<input type="text" class="form-control" ng-model="user.id">
+												</div>
+	                                        </div>
+	                                        <div class="col-md-3">
+												<div class="form-group label-floating">
+													<label class="control-label">Nome Usuario</label>
+													<input type="text" class="form-control" ng-model="user.name" >
+												</div>
+	                                        </div>
+	                                        <div class="col-md-4">
+												<div class="form-group label-floating">
+													<label class="control-label">Email</label>
+													<input type="email" class="form-control" ng-model="user.email">
+												</div>
+	                                        </div>
+	                                    </div>
 
-<div>
-  <button type="button" ng-hide="showAddEditUser" ng-click="show()"> New User</button>
-  <form ng-submit="saveUser(user)" ng-hide="!showAddEditUser">
-      <div>
-        <label>Name</label>
-        <input type="text" placeholder="Name" ng-model="user.name" />
-      </div>
-      <div>
-        <label>Email</label>
-        <input type="email" placeholder="Email" ng-model="user.email" />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" placeholder="Password" ng-model="user.password" />
-      </div>
-      <div>
-        <label>Permissions</label>
-        <div ng-repeat="permission in permissions">
-          <input id="{{permission.role}}" type="checkbox" checklist-model="user.permissions" checklist-value="permission" />
-          <label for="{{permission.role}}">{{permission.role}}</label>
-        </div>
-      </div>
-      <button type="submit">Salvar</button>
-      <button type="button" ng-click="hide()">Cancelar</button>
+	                                    <div class="row">
 
-  </form>
-  <div>
-    <br /><h3>Users</h3>
-    <table>
-      <thead>
-        <tr>
-          <th> Nome</th>
-          <th> Email</th>
-          <th> Permissions</th>
-          <th> </th>
-          <th> </th>
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="user in users">
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <td>
-            <div ng-repeat="permission in user.permissions">{{ permission.role }}</div>
-          </td>
-          <td><button ng-click="editUser(user)">Edit</button></td>
-          <td><button ng-click="deleteUser(user)">Delete</button></td>
-      </tbody>
+	                                    </div>
 
-    </table>
-  </div>
-</div>
+	                                    <div class="row">
+	                                        <div class="col-md-12">
+												<div class="form-group label-floating">
+													<label class="control-label">Endereço</label>
+													<input type="text" class="form-control" ng-model="user.endereco" >
+												</div>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="row">
+	                                        <div class="col-md-4">
+												<div class="form-group label-floating">
+													<label class="control-label">Cidade</label>
+													<input type="text" class="form-control" ng-model="user.cidade" >
+												</div>
+	                                        </div>
+	                                        <div class="col-md-4">
+												<div class="form-group label-floating">
+													<label class="control-label">Estado</label>
+													<input type="text" class="form-control" ng-model="user.estado" >
+												</div>
+	                                        </div>
+	                                        <div class="col-md-4">
+												<div class="form-group label-floating">
+													<label class="control-label">Senha</label>
+													<input type="text" class="form-control" ng-model="user.senha">
+												</div>
+	                                        </div>
+	                                    </div>
+
+	                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+										<button type="button" ng-click="hide()">Cancelar</button>
+	                                    <div class="clearfix"></div>
+	                                </form>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                </div>
+	                
+					                    <div class="container">
+				        <div class="row">
+				          <div class="col-lg-8 col-md-12">
+				            <div class="card">
+				                <div class="card-header" data-background-color="#696969">
+				                      <h4 class="title">Usuarios</h4>
+				                </div>
+				                <div class="card-content table-responsive">
+				                            <table class="table table-hover">
+				                                <thead class="text-blue">
+					                                  <th>Nome</th>
+					                                  <th>Email</th>
+					                                  <th>Endereco</th>
+					                                  <th>Cidade</th>
+					                                  <th>Estado</th>
+				                                </thead>
+				                                <tbody>
+											        <tr ng-repeat="user in users">
+
+											          <td>{{ user.name }}</td>
+											          <td>{{ user.email }}</td>
+											          <td>{{ user.endereco }}</td>
+											          <td>{{ user.cidade }}</td>
+											          <td>{{ user.estado }}</td>
+											         
+											          <td><button ng-click="editUser(user)">Edit</button></td>
+											          <td><button ng-click="deleteUser(user)">Delete</button></td>
+											      </tbody>
+				                            </table>
+				                        </div>
+				            </div>
+				          </div>
+				          </div>
+				      </div>
+					                
+	            </div>
+	        </div>
+	      </div>

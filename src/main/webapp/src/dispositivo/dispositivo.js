@@ -2,19 +2,19 @@
 
 angular.module('homeon')
   .controller('dsptvCtrl', function($scope, $http, RestSrv){
-    var url ="http://localhost:8080/api/private/solo";
+    var url ="http://localhost:8080/api/private/dsptv";
 
-    $scope.solo = {};
-    $scope.solos = [];
+    $scope.dsptv = {};
+    $scope.dsptvs = [];
     $scope.permissions = [];
-    $scope.showAddEditSolo = false;
+    $scope.showAddEditDsptv = false;
 
     $scope.show = function(){
-      $scope.showAddEditSolo = true;
+      $scope.showAddEditDsptv = true;
     };
     $scope.hide = function(){
-      $scope.showAddEditSolo = false;
-      $scope.solo = {};
+      $scope.showAddEditDsptv = false;
+      $scope.dsptv = {};
     };
 
     var permissionUrl = 'http://localhost:8080/api/private/permission';
@@ -22,39 +22,39 @@ angular.module('homeon')
     RestSrv.find(permissionUrl, function(data){
       $scope.permissions = data;
       RestSrv.find(url, function(data){
-        $scope.solos = data;
+        $scope.dsptvs = data;
       });
     });
 
-    $scope.editSolo = function(solo){
-      $scope.solo = angular.copy(solo);
+    $scope.editDsptv = function(dsptv){
+      $scope.dsptv = angular.copy(dsptv);
       $scope.show();
     };
-    $scope.deleteSolo = function(solo) {
-    RestSrv.delete('http://localhost:8080/api/private/solo', solo, function() {
-    $scope.solos.splice($scope.solos.indexOf(solo), 1);
+    $scope.deleteDsptv = function(dsptv) {
+    RestSrv.delete('http://localhost:8080/api/private/dsptv', dsptv, function() {
+    $scope.dsptvs.splice($scope.dsptvs.indexOf(dsptv), 1);
   //  ngNotify.set('User \'' + user.name + '\' deleted.', 'success');
 });
 };
-$scope.saveSolo = function(solo) {
-      if (solo.id) {
-        RestSrv.edit(url, solo, function() {
-          delete solo.password;
+$scope.saveDsptv = function(dsptv) {
+      if (dsptv.id) {
+        RestSrv.edit(url, dsptv, function() {
+          delete dsptv.password;
 
-          for (var i = 0; i < $scope.solos.length; i++) {
-            if ($scope.solos[i].id === solo.id) {
-              $scope.solos[i] = solo;
+          for (var i = 0; i < $scope.dsptvs.length; i++) {
+            if ($scope.dsptvs[i].id === dsptv.id) {
+              $scope.dsptvs[i] = dsptv;
             }
           }
 
           $scope.hide();
-          //ngNotify.set('User \'' + solo.name + '\' updated.', 'success');
+          //ngNotify.set('User \'' + dsptv.name + '\' updated.', 'success');
         });
       } else {
-        RestSrv.add(url, solo, function(newSolo) {
-          $scope.solos.push(newSolo);
+        RestSrv.add(url, dsptv, function(newDsptv) {
+          $scope.dsptvs.push(newDsptv);
           $scope.hide();
-        //  ngNotify.set('User \'' + solo.name + '\' added.', 'success');
+        //  ngNotify.set('User \'' + dsptv.name + '\' added.', 'success');
         });
       }
     };
@@ -62,7 +62,7 @@ $scope.saveSolo = function(solo) {
       $scope.permissions = data;
 
       RestSrv.find(url, function(data) {
-        $scope.solos = data;
+        $scope.dsptvs = data;
       //  ngNotify.set('Loaded users with success.', 'success');
       });
     });

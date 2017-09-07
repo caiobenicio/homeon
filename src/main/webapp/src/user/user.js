@@ -2,7 +2,7 @@
 
 angular.module('homeon')
   .controller('userCtrl', function($scope, $http, RestSrv){
-    var url ="http://localhost:8080/api/private/user";
+    var url ="http://localhost:8080/api/user";
 
     $scope.user = {};
     $scope.users = [];
@@ -12,6 +12,7 @@ angular.module('homeon')
     $scope.show = function(){
       $scope.showAddEditUser = true;
     };
+
     $scope.hide = function(){
       $scope.showAddEditUser = false;
       $scope.user = {};
@@ -35,7 +36,7 @@ angular.module('homeon')
     };
 
       $scope.deleteUser = function(user) {
-      RestSrv.delete('http://localhost:8080/api/private/user', user, function() {
+      RestSrv.delete('http://localhost:8080/api/user', user, function() {
       $scope.users.splice($scope.users.indexOf(user), 1);
     //  ngNotify.set('User \'' + user.name + '\' deleted.', 'success');
   });
@@ -53,25 +54,25 @@ $scope.saveUser = function(user) {
           }
 
           $scope.hide();
-          ngNotify.set('User \'' + user.name + '\' updated.', 'success');
+         // ngNotify.set('User \'' + user.nome + '\' updated.', 'success');
         });
       } else {
         RestSrv.add(url, user, function(newUser) {
           $scope.users.push(newUser);
           $scope.hide();
-          ngNotify.set('User \'' + user.name + '\' added.', 'success');
+          //ngNotify.set('User \'' + user.nome + '\' added.', 'success');
         });
       }
     };
     // Request all data (permission and user).
 //var permissionUrl = SERVICE_PATH.PRIVATE_PATH + '/permission';
 
-RestSrv.find(permissionUrl, function(data) {
-  $scope.permissions = data;
+//RestSrv.find(permissionUrl, function(data) {
+ //$scope.permissions = data;
 
   RestSrv.find(url, function(data) {
     $scope.users = data;
-    ngNotify.set('Loaded users with success.', 'success');
+    //ngNotify.set('Loaded users with success.', 'success');
   });
-});
+//});
   });

@@ -2,22 +2,22 @@
 
 angular.module('homeon')
   .controller('sensorCtrl', function($scope, $http, RestSrv){
-    var url ="http://localhost:8080/api/private/sensor";
+    var url ="http://localhost:8080/api/sensor";
 
     $scope.sensor = {};
     $scope.sensores = [];
     $scope.permissions = [];
-    $scope.showAddEditSens = false;
+    $scope.showAddEditSensor = false;
 
     $scope.show = function(){
-      $scope.showAddEditSens = true;
+      $scope.showAddEditSensor = true;
     };
     $scope.hide = function(){
-      $scope.showAddEditSens = false;
+      $scope.showAddEditSensor = false;
       $scope.sensor = {};
     };
 
-    var permissionUrl = 'http://localhost:8080/api/private/permission';
+    var permissionUrl = 'http://localhost:8080/api/permission';
 
     RestSrv.find(permissionUrl, function(data){
       $scope.permissions = data;
@@ -38,7 +38,7 @@ angular.module('homeon')
 };
     $scope.saveSensor = function(sensor){
       if(sensor.id){
-        RestSrv.edit('http://localhost:8080/api/private/sensor', sensor, function() {
+        RestSrv.edit('http://localhost:8080/api/sensor', sensor, function() {
           delete sensor.password;
 
           for (var i = 0; i < $scope.sensores.length; i++) {
@@ -53,7 +53,7 @@ angular.module('homeon')
 
 
       }else {
-        RestSrv.add('http://localhost:8080/api/private/sensor', sensor, function(newSensor){
+        RestSrv.add('http://localhost:8080/api/sensor', sensor, function(newSensor){
           $scope.sensores.push(newSensor);
           $scope.hide();
         });

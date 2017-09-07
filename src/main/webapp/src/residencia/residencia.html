@@ -1,68 +1,101 @@
-<style type="text/css">
-    * { margin: 0; padding: 0; }
-    #divCenter {
-            background-color: #e1e1e1;
-            width: 400px;
-            height: 200px;
-            left: 50%;
-            margin: -130px 0 0 -210px;
-            padding:10px;
-            position: absolute;
-            top: 50%; }
-</style>
-<div id="divCenter">
-    <div>
-      <button type="button" ng-hide="showAddEditRsd" ng-click="show()"> Nova Residencia</button>
-      <form ng-submit="saveRsd(rsd)" ng-hide="!showAddEditRsd">
-          <div>
-            <label>Cidade</label>
-            <input type="text" placeholder="cidade" ng-model="rsd.cidade" />
-          </div>
-          <div>
-            <label>Bairro</label>
-            <input type="text" placeholder="bairro" ng-model="rsd.bairro" />
-          </div>
-          <div>
-            <label>Rua</label>
-            <input type="text" placeholder="rua" ng-model="rsd.rua" />
-          </div>
-          <div>
-            <label>UF</label>
-            <input type="text" placeholder="uf" ng-model="rsd.uf" />
-          </div>
-          <div>
-            <label>Quantidade Morador</label>
-            <input type="text" placeholder="morador" ng-model="rsd.morador" />
-          </div>
-          <button type="submit">Salvar</button>
-          <button type="button" ng-click="hide()">Cancelar</button>
 
-      </form>
+    <div class="container">
+      <div class="jumbotron">
+          <button type="button" class="btn btn-primary" ng-hide="showAddEditRsd" ng-click="show()"  style="left: 300px;"> Nova Residencia</button>
+          <div class="content" ng-hide="!showAddEditRsd">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header" data-background-color="#696969">
+                                    <h4 class="title">Residencia</h4>
+                    <p class="category">Complete your profile</p>
+                                </div>
+                                <div class="card-content">
+                                    <form ng-submit="saveRsd(rsd)">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                          <div class="form-group label-floating">
+                            <label class="control-label">Cidade</label>
+                            <input type="text" class="form-control" ng-model="rsd.cidade">
+                          </div>
+                                            </div>
+                                            <div class="col-md-3">
+                          <div class="form-group label-floating">
+                            <label class="control-label">Bairro</label>
+                            <input type="text" class="form-control" ng-model="rsd.bairro">
+                          </div>
+                                            </div>
+                                            <div class="col-md-4">
+                          <div class="form-group label-floating">
+                            <label class="control-label">Rua</label>
+                            <input type="email" class="form-control" >
+                          </div>
+                                            </div>
+                                        </div>
 
 
-    <br /><h3>Residencia</h3>
-    <table>
-      <thead>
-        <tr>
-          <th> Cidade </th>
-          <th> Bairro </th>
-          <th> Rua </th>
-          <th> UF </th>
-          <th> Quantidade de Moradores </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="rsd in rsds">
-          <td>{{ rsd.cidade }}</td>
-          <td>{{ rsd.bairro }}</td>
-          <td>{{ rsd.rua }}</td>
-          <td>{{ rsd.uf }}</td>
-          <td>{{ rsd.morador }}</td>
-          <td><button ng-click="editRsd(rsd)">Edit</button></td>
-          <td><button ng-click="deleteRsd(rsd)">Delete</button></td>
-        </tr>
-      </tbody>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                          <div class="form-group label-floating">
+                            <label class="control-label">Uf</label>
+                            <input type="text" class="form-control" >
+                          </div>
+                                            </div>
+                                            <div class="col-md-6">
+                          <div class="form-group label-floating">
+                            <label class="control-label">Quantidade Morador</label>
+                            <input type="text" class="form-control" >
+                          </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success" style="background-color: #696969" >Salvar</button>
+                                        <button type="button" class="btn btn-danger" ng-click="hide()">Cancelar</button>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
-    </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="#696969">
+                      <h4 class="title">Residencia</h4>
+                </div>
+                <div class="card-content table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-warning">
+                                    <th>Cidade</th>
+                                  <th>Bairro</th>
+                                  <th>Rua</th>
+                                  <th>Uf</th>
+                                  <th>Quantidade de Moradores</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>{{rsd.cidade}}</td>
+                                      <td>{{rsd.bairro}}</td>
+                                      <td>{{rsd.rua}}</td>
+                                      <td>{{rsd.uf}}</td>
+                                      <td>{{rsd.qtdmorador}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+          </div>
+          </div>
+      </div>
+
+
+    </div>
   </div>
-</div>

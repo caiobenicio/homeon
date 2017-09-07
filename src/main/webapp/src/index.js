@@ -28,7 +28,7 @@ angular.module('homeon', ['ngRoute'])
       controller: 'sensorCtrl'
     })
     .when('/dispositivo', {
-      templateUrl: 'src/dispositivos/dispositivos.html',
+      templateUrl: 'src/dispositivo/dispositivo.html',
       controller: 'dsptvCtrl'
     })
     .when('/abrirChamado', {

@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('homeon')
-  .controller('SoloCtrl', function($scope, $http, RestSrv){
-    var url ="http://localhost:8080/api/private/solo";
+  .controller('comodoCtrl', function($scope, $http, RestSrv){
+    var url ="http://localhost:8080/api/private/comodo";
 
-    $scope.solo = {};
-    $scope.solos = [];
+    $scope.comodo = {};
+    $scope.comodos = [];
     $scope.permissions = [];
-    $scope.showAddEditSolo = false;
+    $scope.showAddEditComodo = false;
 
     $scope.show = function(){
-      $scope.showAddEditSolo = true;
+      $scope.showAddEditComodo = true;
     };
     $scope.hide = function(){
-      $scope.showAddEditSolo = false;
-      $scope.solo = {};
+      $scope.showAddEditComodo = false;
+      $scope.comodo = {};
     };
 
     var permissionUrl = 'http://localhost:8080/api/private/permission';
@@ -22,39 +22,39 @@ angular.module('homeon')
     RestSrv.find(permissionUrl, function(data){
       $scope.permissions = data;
       RestSrv.find(url, function(data){
-        $scope.solos = data;
+        $scope.comodos = data;
       });
     });
 
-    $scope.editSolo = function(solo){
-      $scope.solo = angular.copy(solo);
+    $scope.editComodo = function(comodo){
+      $scope.comodo = angular.copy(comodo);
       $scope.show();
     };
-    $scope.deleteSolo = function(solo) {
-    RestSrv.delete('http://localhost:8080/api/private/solo', solo, function() {
-    $scope.solos.splice($scope.solos.indexOf(solo), 1);
+    $scope.deleteComodo = function(comodo) {
+    RestSrv.delete('http://localhost:8080/api/private/comodo', comodo, function() {
+    $scope.comodos.splice($scope.comodos.indexOf(comodo), 1);
   //  ngNotify.set('User \'' + user.name + '\' deleted.', 'success');
 });
 };
-$scope.saveSolo = function(solo) {
-      if (solo.id) {
-        RestSrv.edit(url, solo, function() {
-          delete solo.password;
+$scope.saveComodo = function(comodo) {
+      if (comodo.id) {
+        RestSrv.edit(url, comodo, function() {
+          delete comodo.password;
 
-          for (var i = 0; i < $scope.solos.length; i++) {
-            if ($scope.solos[i].id === solo.id) {
-              $scope.solos[i] = solo;
+          for (var i = 0; i < $scope.comodos.length; i++) {
+            if ($scope.comodos[i].id === comodo.id) {
+              $scope.comodos[i] = comodo;
             }
           }
 
           $scope.hide();
-          //ngNotify.set('User \'' + solo.name + '\' updated.', 'success');
+          //ngNotify.set('User \'' + comodo.name + '\' updated.', 'success');
         });
       } else {
-        RestSrv.add(url, solo, function(newSolo) {
-          $scope.solos.push(newSolo);
+        RestSrv.add(url, comodo, function(newSolo) {
+          $scope.comodos.push(newComodo);
           $scope.hide();
-        //  ngNotify.set('User \'' + solo.name + '\' added.', 'success');
+        //  ngNotify.set('User \'' + comodo.name + '\' added.', 'success');
         });
       }
     };
@@ -62,7 +62,7 @@ $scope.saveSolo = function(solo) {
       $scope.permissions = data;
 
       RestSrv.find(url, function(data) {
-        $scope.solos = data;
+        $scope.comodos = data;
       //  ngNotify.set('Loaded users with success.', 'success');
       });
     });
