@@ -26,6 +26,9 @@ hs_err_pid*
 target/
 *.idea/
 
+# Eclipse
 .settings/
+.project
+.classpath
 
 node_modules/
