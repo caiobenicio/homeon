@@ -34,11 +34,6 @@ public class UserEntity extends BaseEntity<Long> {
 	@Column(name = "password", length = 80, nullable = false)
 	private String password;
 
-	@NotNull
-	@Size(min = 11, max = 11)
-	@Column(name = "phone", length = 11, nullable = false)
-	private String phone;
-
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_permission", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id") )
 	private List<PermissionEntity> permissions;
@@ -47,12 +42,11 @@ public class UserEntity extends BaseEntity<Long> {
 	public UserEntity() {
 	}
 	
-    public UserEntity(String name, String email, String password, String phone) {
+    public UserEntity(String name, String email, String password) {
     	super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.phone = phone;
     }
 
     public UserEntity(String name) {
@@ -81,14 +75,6 @@ public class UserEntity extends BaseEntity<Long> {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 	public List<PermissionEntity> getPermissions() {
