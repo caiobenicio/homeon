@@ -16,4 +16,17 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+
+# SECURITY
+security:
+  password:
+    secret: secret
+
+# LIQUIBASE
+liquibase:
+  enabled: true
+  change-log: classpath:liquibase/config/master.xml
+  url: jdbc:postgresql://localhost:5432/homeon
+  user: homeon
+  password: homeon

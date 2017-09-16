@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.home.on.utils.ResourcePaths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.core.annotation.Order;
@@ -27,7 +28,6 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
-import org.wpattern.mutrack.simple.utils.ServicePath;
 
 @EnableWebSecurity
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
@@ -57,22 +57,18 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 // Global Authority to OPTIONS (permit all).
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // Public (permit all).
-                .antMatchers(ServicePath.PUBLIC_ROOT_PATH + ServicePath.ALL).permitAll()
-                // Package Authorities.
-                .antMatchers(HttpMethod.GET, ServicePath.PACKAGEE_PATH).hasAnyAuthority(AUTH_USER, AUTH_ADMIN)
-                .antMatchers(HttpMethod.POST, ServicePath.PACKAGEE_PATH).hasAnyAuthority(AUTH_USER, AUTH_ADMIN)
-                .antMatchers(HttpMethod.PUT, ServicePath.PACKAGEE_PATH).hasAnyAuthority(AUTH_USER, AUTH_ADMIN)
-                .antMatchers(HttpMethod.DELETE, ServicePath.PACKAGEE_PATH).hasAnyAuthority(AUTH_USER, AUTH_ADMIN)
+                //.antMatchers(ResourcePaths.PUBLIC_ROOT_PATH + ResourcePaths.ALL).permitAll()
+                .antMatchers(ResourcePaths.ROOT_PATH + ResourcePaths.ALL).permitAll()
                 // User Authorities.
-                .antMatchers(HttpMethod.GET, ServicePath.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
-                .antMatchers(HttpMethod.POST, ServicePath.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
-                .antMatchers(HttpMethod.PUT, ServicePath.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
-                .antMatchers(HttpMethod.DELETE, ServicePath.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
+                .antMatchers(HttpMethod.GET, ResourcePaths.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
+                .antMatchers(HttpMethod.POST, ResourcePaths.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
+                .antMatchers(HttpMethod.PUT, ResourcePaths.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
+                .antMatchers(HttpMethod.DELETE, ResourcePaths.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
                 // Permission Authorities.
-                .antMatchers(HttpMethod.GET, ServicePath.PERMISSION_PATH).hasAnyAuthority(AUTH_ADMIN)
+                .antMatchers(HttpMethod.GET, ResourcePaths.PERMISSION_PATH).hasAnyAuthority(AUTH_ADMIN)
                 .anyRequest().fullyAuthenticated().and()
                 // Logout configuration.
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher(ServicePath.LOGOUT_PATH)).logoutSuccessHandler(headerHandler).and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher(ResourcePaths.LOGOUT_PATH)).logoutSuccessHandler(headerHandler).and()
                 // CSRF configuration.
                 .csrf().csrfTokenRepository(csrfTokenRepository()).and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)

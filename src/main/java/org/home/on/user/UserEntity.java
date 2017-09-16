@@ -1,113 +1,101 @@
 package org.home.on.user;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.home.on.permission.PermissionEntity;
 import org.home.on.utils.BaseEntity;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_user")
-@AttributeOverride(name = "id", column = @Column(name = "id"))
+@AttributeOverride(name = "id", column = @Column(name = "pk_id"))
 public class UserEntity extends BaseEntity<Long> {
-    private static final long serialVersionUID = 1L;
 
-    @Column(name = "nome", length = 120, nullable = false)
+	private static final long serialVersionUID = 201602010251L;
+	
+	@NotNull
+	@Size(min = 4, max = 120)
+	@Column(name = "name", length = 120, nullable = false)
     private String name;
-    @Column(name = "email", length = 255, nullable = false)
-    private String email;
-    @Column(name = "endereco", length = 120, nullable = true)
-    private String endereco;
-    @Column(name = "cidade", length = 120, nullable = true)
-    private String cidade;
-    @Column(name = "estado", length = 120, nullable = true)
-    private String estado;
-    @Column(name = "senha", length = 80, nullable = false)
-    private String senha;
+	
+	@Email
+	@NotNull
+	@NotEmpty
+	@Column(name = "email", length = 255, nullable = false, unique = true)
+	private String email;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "tb_user_permission", joinColumns = @JoinColumn(name = "user_id"),
+	
+	@NotNull
+	@Size(min = 3, max = 80)
+	@Column(name = "password", length = 80, nullable = false)
+	private String password;
 
-    inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    private List<PermissionEntity> permissions;
+	@NotNull
+	@Size(min = 11, max = 11)
+	@Column(name = "phone", length = 11, nullable = false)
+	private String phone;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_user_permission", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id") )
+	private List<PermissionEntity> permissions;
 
 
-    public UserEntity() {
+	public UserEntity() {
+	}
+	
+    public UserEntity(String name, String email, String password, String phone) {
+    	super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
     }
 
-
-    public UserEntity(String name, String email, String endereco, String cidade, String estado, String senha) {
-        super();
+    public UserEntity(String name) {
         this.name = name;
-        this.email = email;
-        this.endereco = endereco;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.senha = senha;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return this.email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getEndereco() {
-        return endereco;
-    }
+	public String getPassword() {
+		return this.password;
+	}
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getCidade() {
-        return cidade;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public List<PermissionEntity> getPermissions() {
+		return this.permissions;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public List<PermissionEntity> getPermissions() {
-        return this.permissions;
-    }
-
-    public void setPermissions(List<PermissionEntity> permissions) {
-        this.permissions = permissions;
-    }
-
-
+	public void setPermissions(List<PermissionEntity> permissions) {
+		this.permissions = permissions;
+	}
 }

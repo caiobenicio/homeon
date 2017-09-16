@@ -4,7 +4,7 @@ package org.home.on.utils;
  import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yml")
 public class ApplicationProperty {
 
     @Value("${security.password.secret}")

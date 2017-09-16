@@ -1,13 +1,14 @@
 package org.home.on.security;
+import org.home.on.utils.BaseBean;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.wpattern.mutrack.simple.utils.BaseBean;
 
 public class LoginDetailBean extends BaseBean implements UserDetails {
 
