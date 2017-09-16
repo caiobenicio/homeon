@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-	<changeSet id="1" author="easy_buying">
+	<changeSet id="1" author="caio">
 		<createTable tableName="tb_user">
 			<column name="pk_id" type="bigint(20)" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
@@ -22,7 +22,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="2" author="easy_buying">
+	<changeSet id="2" author="caio">
 		<insert tableName="tb_user">
 			<column name="pk_id" value="1" />
 			<column name="email" value="admin@admin.com" />
