@@ -45,4 +45,14 @@ public class AppConfig {
                 .build();
     }
 
+    @Bean(name = "applicationProperty")
+    public ApplicationProperty getApplicationProperty() {
+        return new ApplicationProperty();
+    }
+
+    @Bean(name = "passwordEncoder")
+    public StandardPasswordEncoder getStandardPasswordEncoder() {
+        return new StandardPasswordEncoder(getApplicationProperty().getSecret());
+    }
+
 }

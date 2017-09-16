@@ -3,8 +3,8 @@ package org.test.home.on.domain.user;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.home.on.domain.user.UserEntity;
-import org.home.on.domain.user.UserRepository;
+import org.home.on.user.UserEntity;
+import org.home.on.user.UserRepository;
 import org.test.home.on.utils.BaseTest;
 
 import java.util.List;

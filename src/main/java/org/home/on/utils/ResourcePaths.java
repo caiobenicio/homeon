@@ -29,6 +29,8 @@ public final class ResourcePaths {
 	public static final String SENSOR_PATH = PRIVATE_ROOT_PATH + "/sensor";
 	
 	public static final String DISPOSITIVO_PATH = PRIVATE_ROOT_PATH + "/dispositivo";
+
+	public static final String PERMISSION_PATH = PRIVATE_ROOT_PATH + "/permission";
 	
 	//public static final String USER_PATH = PRIVATE_ROOT_PATH + "/user";
 
