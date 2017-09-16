@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>org.home.on</groupId>
-    <artifactId>home-on</artifactId>
+    <artifactId>homeon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
@@ -90,6 +90,12 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- LIQUIBASE -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
         </dependency>
     </dependencies>
 

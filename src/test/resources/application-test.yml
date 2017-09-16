@@ -1,6 +1,6 @@
 # LOGGING
 logging:
-  file: target/home-on.log
+  file: target/homeon.log
   level:
     org.test.home.on: DEBUG
     org.home.on: DEBUG
@@ -10,12 +10,24 @@ logging:
 # DATABASE
 spring:
   datasource:
-    url: jdbc:h2:mem:home_on;INIT=runscript from 'classpath:schema-h2.sql'\;runscript from 'classpath:data-h2.sql'
-    username: home_h2
-    password: on_h2
-    initialize: true
+    url: jdbc:postgresql://localhost:5432/homeon
+    username: homeon
+    password: homeon
+    driverClassName: org.postgresql.Driver
   jpa:
-    database: H2
     show-sql: true
     hibernate:
       ddl-auto: none
+
+# SECURITY
+security:
+  password:
+    secret: secret
+
+# LIQUIBASE
+liquibase:
+  enabled: true
+  change-log: classpath:liquibase/config/master.xml
+  url: jdbc:postgresql://localhost:5432/homeon
+  user: homeon
+  password: homeon

@@ -35,13 +35,5 @@ public class UserRepositoryTest extends BaseTest {
 
 		LOGGER.info(users);
 	}
-	
-	@Test
-	public void findFindByName() {
-		List<UserEntity> sol = this.userRepository.findByName("caio");
 
-		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info("Test FindAll(): " + sol);
-		}
-	}
 }
