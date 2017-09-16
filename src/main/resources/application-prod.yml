@@ -26,7 +26,7 @@ security:
 # LIQUIBASE
 liquibase:
   enabled: true
-  change-log: change-log:classpath:liquibase/config/master.xml
+  change-log: classpath:liquibase/config/master.xml
   url: ${JDBC_DATABASE_URL}
   user: ${JDBC_DATABASE_USERNAME}
   password: ${JDBC_DATABASE_PASSWORD}
