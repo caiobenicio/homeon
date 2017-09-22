@@ -12,12 +12,7 @@
 	                            <div class="card-content">
 	                                <form  ng-submit="saveUser(user)">
 	                                    <div class="row">
-	                                        <div class="col-md-5">
-												<div class="form-group label-floating">
-													<label class="control-label">Companhia </label>
-													<input type="text" class="form-control" ng-model="user.id">
-												</div>
-	                                        </div>
+	                                        
 	                                        <div class="col-md-3">
 												<div class="form-group label-floating">
 													<label class="control-label">Nome Usuario</label>
@@ -33,38 +28,20 @@
 	                                    </div>
 
 	                                    <div class="row">
-
-
-	                                    </div>
-
-	                                    <div class="row">
-	                                        <div class="col-md-12">
-												<div class="form-group label-floating">
-													<label class="control-label">Endere�o</label>
-													<input type="text" class="form-control" ng-model="user.endereco" >
-												</div>
-	                                        </div>
-	                                    </div>
-
-	                                    <div class="row">
-	                                        <div class="col-md-4">
-												<div class="form-group label-floating">
-													<label class="control-label">Cidade</label>
-													<input type="text" class="form-control" ng-model="user.cidade" >
-												</div>
-	                                        </div>
-	                                        <div class="col-md-4">
-												<div class="form-group label-floating">
-													<label class="control-label">Estado</label>
-													<input type="text" class="form-control" ng-model="user.estado" >
-												</div>
-	                                        </div>
+	                                        
 	                                        <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Senha</label>
 													<input type="text" class="form-control" ng-model="user.senha">
 												</div>
 	                                        </div>
+	                                        <div>
+										      <label>Permissions</label>
+										      <div ng-repeat="permission in permissions">
+										        <input id="{{permission.role}}" type="checkbox" checklist-model="user.permissions" checklist-value="permission">
+										        <label for="{{permission.role}}">{{permission.role | formatPermission}}</label>
+										      </div>
+										    </div>
 	                                    </div>
 
 	                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
@@ -82,26 +59,23 @@
 				          <div class="col-lg-8 col-md-12">
 				            <div class="card">
 				                <div class="card-header" data-background-color="#696969">
-				                      <h4 class="title">Usuarios</h4>
+				                      <h4 class="title">Usuario</h4>
 				                </div>
 				                <div class="card-content table-responsive">
 				                            <table class="table table-hover">
 				                                <thead class="text-blue">
 					                                  <th>Nome</th>
 					                                  <th>Email</th>
-					                                  <th>Endereco</th>
-					                                  <th>Cidade</th>
-					                                  <th>Estado</th>
 				                                </thead>
 				                                <tbody>
 											        <tr ng-repeat="user in users">
 
 											          <td>{{ user.name }}</td>
 											          <td>{{ user.email }}</td>
-											          <td>{{ user.endereco }}</td>
-											          <td>{{ user.cidade }}</td>
-											          <td>{{ user.estado }}</td>
-											         
+											          <td>
+											            <div ng-repeat="permission in user.permissions">{{ permission.role | formatPermission}}</div>
+											          </td>
+											          
 											          <td><button ng-click="editUser(user)">Editar</button></td>
 											          <td><button ng-click="deleteUser(user)">Deletar</button></td>
 											      </tbody>

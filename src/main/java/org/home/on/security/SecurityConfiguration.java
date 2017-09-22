@@ -58,7 +58,8 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // Public (permit all).
                 //.antMatchers(ResourcePaths.PUBLIC_ROOT_PATH + ResourcePaths.ALL).permitAll()
-                .antMatchers(ResourcePaths.ROOT_PATH + ResourcePaths.ALL).permitAll()
+//                .antMatchers(ResourcePaths.ROOT_PATH + ResourcePaths.ALL).permitAll()
+                .antMatchers(ResourcePaths.ALL).permitAll()
                 // User Authorities.
                 .antMatchers(HttpMethod.GET, ResourcePaths.USER_PATH).hasAnyAuthority(AUTH_ADMIN)
                 .antMatchers(HttpMethod.POST, ResourcePaths.USER_PATH).hasAnyAuthority(AUTH_ADMIN)

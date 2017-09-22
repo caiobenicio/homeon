@@ -9,16 +9,16 @@
 </head>
 <body>
 
-<form>
+<form ng-submit="login(email, password)">
   <h1>Login Funcionario</h1>
   <div class="inset">
   <p>
     <label for="email">Endereco Email</label>
-    <input type="text" name="email" id="email">
+    <input type="text" name="email" ng-model="email" placeholder="Email" required autofocus />
   </p>
   <p>
     <label for="password">Senha</label>
-    <input type="password" name="password" id="password">
+    <input type="password" ng-model="password" name="password" id="password" placeholder="Password" required />
   </p>
   <p>
     <input type="checkbox" name="remember" id="remember">
@@ -27,7 +27,7 @@
   </div>
   <p class="p-container">
     <span>Forgot password ?</span>
-    <input type="submit" name="go" id="go" value="Log in">
+    <input value="Login" type="submit" name="go" id="go" value="Log in">
   </p>
 </form>
 
