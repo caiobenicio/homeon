@@ -1,6 +1,11 @@
 'use strict';
 
-var BASE_URL = 'http://localhost:8080/api';
+var BASE_URL;
+if (window.location.port === "8081" ) {
+    BASE_URL = window.location.origin + ':8081/api';
+} else {
+    BASE_URL = window.location.origin + '/api';
+}
 
 angular.module('homeon', ['checklist-model', 'ngNotify', 'ngRoute', 'ngCookies', 'ngStorage'])
   .constant('SERVICE_PATH', {
