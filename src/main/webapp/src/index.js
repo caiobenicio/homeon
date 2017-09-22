@@ -1,6 +1,6 @@
 'use strict';
 
-var BASE_URL = 'http://localhost:8081';
+var BASE_URL = 'http://localhost:8080/api';
 
 angular.module('homeon', ['checklist-model', 'ngNotify', 'ngRoute', 'ngCookies', 'ngStorage'])
   .constant('SERVICE_PATH', {

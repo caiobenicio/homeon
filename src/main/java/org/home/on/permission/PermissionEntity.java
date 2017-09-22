@@ -1,17 +1,18 @@
 package org.home.on.permission;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.home.on.utils.BaseEntity;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.home.on.utils.BaseEntity;
 
 @Entity
 @Table(name = "tb_permission")
-@AttributeOverride(name = "id", column = @Column(name = "id"))
+@AttributeOverride(name = "id", column = @Column(name = "pk_id"))
 public class PermissionEntity extends BaseEntity<Long> {
 
     private static final long serialVersionUID = 201602010401L;
