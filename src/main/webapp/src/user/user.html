@@ -1,0 +1,66 @@
+
+<div class="container">
+	<div class="jumbotron">
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="card">
+							<div class="card-header" data-background-color="#696969">
+								<h4 class="title">Usuario</h4>
+							</div>
+							<div class="card-content">
+								<form ng-submit="saveUser(user)">
+									<div class="row">
+										<div class="col-md-5">
+											<div class="form-group label-floating">
+												<label class="control-label">Nome</label>
+												<input type="text" class="form-control" ng-model="user.name">
+											</div>
+										</div>
+										<div class="col-md-7">
+											<div class="form-group label-floating">
+												<label class="control-label">Email</label>
+												<input type="text" class="form-control" ng-model="user.email">
+											</div>
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col-md-7">
+											<div class="form-group label-floating">
+												<label class="control-label">Senha</label>
+												<input type="password" class="form-control" ng-model="user.password">
+											</div>
+										</div>
+									</div>
+
+									<button type="submit" class="btn btn-success">Salvar</button>
+									<button type="button" class="btn btn-danger" ng-click="hide()">Cancelar</button>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<table>
+
+			<tbody>
+			<tr ng-repeat="user in users">
+				<td>
+					<div ng-repeat="permission in user.permissions">{{ permission.role | formatPermission}}</div>
+				</td>
+				<td><button ng-click="editUser(user)">Edit</button></td>
+				<td><button ng-click="deleteUser(user)">Delete</button></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
