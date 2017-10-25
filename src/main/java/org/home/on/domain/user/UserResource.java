@@ -1,24 +1,23 @@
-package org.home.on.domain.user;
+package org.home.on.user;
 
-import org.apache.tomcat.util.descriptor.web.ResourceBase;
+import org.home.on.utils.GenericService;
+import org.home.on.utils.ResourcePaths;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.home.on.utils.ResourcePaths;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = ResourcePaths.USER_PATH)
-public class UserResource extends ResourceBase {
+public class UserResource extends GenericService<UserEntity, Long> {
 
     @Autowired
-    private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
-    @GetMapping
-    public List<UserEntity> findAll() {
-        return userRepository.findAll();
+    @Override
+    public UserEntity insert(UserEntity user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return super.insert(user);
     }
 
 }
