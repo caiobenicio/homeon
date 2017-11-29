@@ -1,11 +1,12 @@
 package org.home.on.utils;
 
+import org.home.on.AppMain;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.home.on.AppMain;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -43,6 +44,16 @@ public class AppConfig {
                 .description(appDescription)
                 .version(appVersion)
                 .build();
+    }
+
+    @Bean(name = "applicationProperty")
+    public ApplicationProperty getApplicationProperty() {
+        return new ApplicationProperty();
+    }
+
+    @Bean(name = "passwordEncoder")
+    public StandardPasswordEncoder getStandardPasswordEncoder() {
+        return new StandardPasswordEncoder(getApplicationProperty().getSecret());
     }
 
 }

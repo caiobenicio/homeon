@@ -5,15 +5,7 @@ services:
    ports:
      - "5432:5432"
    environment:
-     - POSTGRES_DB=home_on
-     - POSTGRES_USER=home
-     - POSTGRES_PASSWORD=on
+     - POSTGRES_DB=homeon
+     - POSTGRES_USER=homeon
+     - POSTGRES_PASSWORD=homeon
      - MAX_CONNECTIONS=100
- stubby4j:
-   image: sandokandias/stubby4j-docker
-   ports:
-     - "8882:8882"
-   environment:
-     STUBBY_PORT: 8882
-   volumes:
-     - ./documents/stubby4j/stubby.yml:/usr/local/stubby.yml

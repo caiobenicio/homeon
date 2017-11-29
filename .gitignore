@@ -25,3 +25,10 @@ hs_err_pid*
 *.iml
 target/
 *.idea/
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+node_modules/

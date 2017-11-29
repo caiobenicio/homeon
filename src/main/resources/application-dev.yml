@@ -9,11 +9,24 @@ logging:
 # DATABASE
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/home_on
-    username: home
-    password: on
+    url: jdbc:postgresql://localhost:5432/homeon
+    username: homeon
+    password: homeon
     driverClassName: org.postgresql.Driver
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+
+# SECURITY
+security:
+  password:
+    secret: secret
+
+# LIQUIBASE
+liquibase:
+  enabled: true
+  change-log: classpath:liquibase/config/master.xml
+  url: jdbc:postgresql://localhost:5432/homeon
+  user: homeon
+  password: homeon
